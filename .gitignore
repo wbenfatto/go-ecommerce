@@ -1,0 +1,47 @@
+# Binaries
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.out
+*.test
+
+# Go
+vendor/
+go.work.sum
+dist/
+
+# Build
+/build/
+/tmp/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+.docker/
+
+# Env
+.env
+.env.local
+.env.*.local
+*.env
+
+# Proto generated
+/pkg/gen/
+
+# Logs
+*.log
+/logs/
+
+# Temporary
+/temp/
