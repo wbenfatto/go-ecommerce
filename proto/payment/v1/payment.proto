@@ -1,0 +1,51 @@
+syntax = "proto3";
+
+package payment.v1;
+
+option go_package = "github.com/wbenfatto/go-ecommerce/pkg/gen/payment/v1;paymentpb";
+
+service PaymentService {
+  rpc ProcessPayment(ProcessPaymentRequest) returns (ProcessPaymentResponse);
+  rpc RefundPayment(RefundPaymentRequest) returns (RefundPaymentResponse);
+  rpc GetPayment(GetPaymentRequest) returns (GetPaymentResponse);
+}
+
+message Payment {
+  string id              = 1;
+  string order_id        = 2;
+  string user_id         = 3;
+  double amount          = 4;
+  string status          = 5;
+  string idempotency_key = 6;
+  string created_at      = 7;
+  string updated_at      = 8;
+}
+
+message ProcessPaymentRequest {
+  string order_id        = 1;
+  string user_id         = 2;
+  double amount          = 3;
+  string idempotency_key = 4;
+  string card_last_four  = 5;
+}
+
+message ProcessPaymentResponse {
+  Payment payment = 1;
+}
+
+message RefundPaymentRequest {
+  string payment_id      = 1;
+  string idempotency_key = 2;
+}
+
+message RefundPaymentResponse {
+  Payment payment = 1;
+}
+
+message GetPaymentRequest {
+  string id = 1;
+}
+
+message GetPaymentResponse {
+  Payment payment = 1;
+}

@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package notification.v1;
+
+option go_package = "github.com/wbenfatto/go-ecommerce/pkg/gen/notification/v1;notificationpb";
+
+service NotificationService {
+  rpc SendEmail(SendEmailRequest) returns (SendEmailResponse);
+}
+
+message SendEmailRequest {
+  string to      = 1;
+  string subject = 2;
+  string body    = 3;
+  string user_id = 4;
+}
+
+message SendEmailResponse {
+  string notification_id = 1;
+}
